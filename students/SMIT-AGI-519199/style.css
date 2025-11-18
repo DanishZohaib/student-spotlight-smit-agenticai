@@ -1,0 +1,306 @@
+/* --- Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+    --bg-color-light: #f4f4f9;
+    --text-color-light: #333;
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --card-bg-light: #ffffff;
+    --border-color-light: #ddd;
+
+    --bg-color-dark: #121212;
+    --text-color-dark: #eee;
+    --card-bg-dark: #1e1e1e;
+    --border-color-dark: #444;
+
+    --font-family: 'Poppins', sans-serif;
+    --transition-speed: 0.3s;
+}
+
+/* --- Dark Mode --- */
+body.dark-mode {
+    --bg-color-light: var(--bg-color-dark);
+    --text-color-light: var(--text-color-dark);
+    --card-bg-light: var(--card-bg-dark);
+    --border-color-light: var(--border-color-dark);
+}
+
+/* --- General Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* --- Header & Navigation --- */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    transition: background-color var(--transition-speed);
+}
+
+body.dark-mode header {
+    background-color: rgba(30, 30, 30, 0.1);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+nav .logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text-color-light);
+    font-weight: 600;
+    transition: color var(--transition-speed);
+}
+
+nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Theme Switcher --- */
+.theme-switcher {
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.theme-switcher .fa-sun { display: none; }
+.theme-switcher .fa-moon { display: block; }
+body.dark-mode .theme-switcher .fa-sun { display: block; }
+body.dark-mode .theme-switcher .fa-moon { display: none; }
+
+/* --- Hero Section --- */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(45deg, #007bff, #00aaff, #007bff, #00aaff);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.hero-content {
+    color: white;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.hero-content .headline {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.cta-buttons .btn {
+    padding: 0.8rem 2rem;
+    border: 2px solid white;
+    border-radius: 50px;
+    color: white;
+    text-decoration: none;
+    margin: 0 0.5rem;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.cta-buttons .btn:hover {
+    background-color: white;
+    color: var(--primary-color);
+}
+
+.cta-buttons .btn-secondary {
+    background-color: transparent;
+}
+
+/* --- Sections --- */
+section {
+    padding: 6rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--primary-color);
+}
+
+/* --- About Me Section --- */
+.about-container {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.about-text {
+    flex: 2;
+    line-height: 1.8;
+}
+
+.about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 50%;
+    border: 5px solid var(--primary-color);
+}
+
+/* --- Skills Section --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.skill-card {
+    background-color: var(--card-bg-light);
+    padding: 2rem;
+    border-radius: 10px;
+    text-align: center;
+    font-weight: 600;
+    border: 1px solid var(--border-color-light);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* --- Projects Section --- */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.project-card {
+    background-color: var(--card-bg-light);
+    padding: 2rem;
+    border-radius: 10px;
+    border: 1px solid var(--border-color-light);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.project-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* --- Experience Section --- */
+.experience-item {
+    background-color: var(--card-bg-light);
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 5px solid var(--primary-color);
+}
+
+/* --- Contact Section --- */
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.contact-links a {
+    text-decoration: none;
+    color: var(--text-color-light);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color var(--transition-speed);
+}
+
+.contact-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem 5%;
+    background-color: var(--card-bg-light);
+    border-top: 1px solid var(--border-color-light);
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 768px) {
+    nav ul {
+        display: none; 
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content .headline {
+        font-size: 1.2rem;
+    }
+
+    .about-container {
+        flex-direction: column;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+}
